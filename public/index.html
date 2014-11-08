@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="srt-tube">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.75">
+		<title>srt-tube</title>
+
+		<!-- Scripts -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script> <!-- Angular -->
+		<script src="https://code.jquery.com/jquery.js"></script> <!-- jQuery -->
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> <!-- Bootstrap -->
+		<script src="https://www.youtube.com/iframe_api"></script>
+
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/angular-youtube-embed.min.js"></script>
+		<script type="text/javascript" src="js/ripples.min.js"></script>
+		<script type="text/javascript" src="js/material.min.js"></script>
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<!-- Stylesheets -->
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet"> <!-- FontAwesome -->
+		<link href="css/ripples.min.css" rel="stylesheet">
+		<link href="css/material-wfont.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+
+	<body id="main" ng-controller="SubCtrl">
+		<div class="container center-block pagination-centered" >
+			<div class="well well-lg" style="margin-top: 50px; padding: 0px;">
+				<div class="embed-responsive embed-responsive-16by9">
+					<youtube-video player="player" video-id="videoId"></youtube-video>
+				</div>
+				<div id="content" style="padding:20px;">
+					<div id="subtitle" style="width:100%;text-align: center; min-height: 30px;">
+						<p class="lead" ng-if="isPlaying && isDisplay(line)"  ng-repeat="line in subs">
+							{{line.text}}
+						</p>
+					</div>
+					<hr>
+					<div style="height:50px;">
+						<a href="#" ng-click="togglePlay()" class="btn btn-primary btn-fab btn-raised pull-left"
+							ng-class="(isPlaying) ? 'mdi-av-stop' : 'mdi-av-play-arrow'"></a>
+
+						<form class="form-inline pull-right" role="form">
+							<div class="form-group">
+								<input id="videoIdInput" ng-model="videoId" type="text"
+									class="form-control floating-label" placeholder="Youtube Video ID">
+							</div>
+							<div class="form-group">
+								<input type="text" readonly="" class="form-control floating-label" placeholder="Browse SRT file...">
+								<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
