@@ -1,3 +1,6 @@
+/* jslint node: true */
+"use strict";
+
 $(document).ready(function() {
 	$.material.init();
 });
@@ -9,7 +12,7 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 		PLAYING : 0,
 		PAUSED : 1,
 		STOPPED : 2
-	}
+	};
 	$scope.state = $scope.PlaybackState.STOPPED;
 	
 	$scope.displayTimer = false;
@@ -20,8 +23,8 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 	$scope.playerOptions = {
 		autohide: 1,
 		modestbranding: 1
-	};	
-	$scope.videoId;
+	};
+    $scope.videoId;
 	$scope.subs = [];
 	
 	// Timer.
@@ -48,6 +51,10 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 	$scope.$on('youtube.player.paused', function ($event, player) {
 		$scope.state = $scope.PlaybackState.PAUSED;
 	});
+    
+    $scope.$on('youtube.player.buffering', function ($event, player) {
+        $scope.state = $scope.PlaybackState.PAUSED;
+    });
 	
 	$scope.$on('youtube.player.ended', function ($event, player) {
 		$scope.state = $scope.PlaybackState.STOPPED;
@@ -62,7 +69,7 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 		//Take the first selected file
 		fd.append("file", files[0]);
 		
-		if (files[0] == null) return;
+		if (files[0] === null) return;
 		
 
 		$http.post('/sub/upload', fd, {
@@ -76,10 +83,10 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 			console.log(data);
 		});
 
-	}
+	};
 	
 	$scope.isDisplay = function (line) {
 		if ($scope.state == $scope.PlaybackState.STOPPED) return false;
 		return $scope.time >= line.startTime && $scope.time <= line.endTime;
-	}
+	};
 });
