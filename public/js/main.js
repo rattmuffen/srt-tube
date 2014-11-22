@@ -78,37 +78,8 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 
 	}
 	
-	$scope.togglePlay = function () {
-		switch($scope.state) {
-			case $scope.PlaybackState.PLAYING:
-				// Pause video.
-				$scope.player.pauseVideo();
-				$scope.state = $scope.PlaybackState.PAUSED;
-				break;
-			case $scope.PlaybackState.PAUSED:
-			case $scope.PlaybackState.STOPPED:
-				if ($scope.player) {
-					// Play video.
-					$scope.player.playVideo();
-					$scope.state = $scope.PlaybackState.PLAYING;
-				}
-				break;
-		}
-	}
-	
 	$scope.isDisplay = function (line) {
 		if ($scope.state == $scope.PlaybackState.STOPPED) return false;
 		return $scope.time >= line.startTime && $scope.time <= line.endTime;
-	}
-	
-	$scope.getPlaybackIcon = function () {
-		switch($scope.state) {
-			case $scope.PlaybackState.PLAYING:
-				return 'mdi-av-pause';
-			case $scope.PlaybackState.PAUSED:
-			case $scope.PlaybackState.STOPPED:
-				return 'mdi-av-play-arrow';
-		}
-
 	}
 });
