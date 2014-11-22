@@ -32,19 +32,15 @@
 	</head>
 
 	<body id="main" ng-controller="SubCtrl">
-		<div class="container center-block pagination-centered" >
+		<div class="container center-block pagination-centered">
 			<div class="well well-lg" style="margin-top: 50px; padding: 0px;">
 				<div class="embed-responsive embed-responsive-16by9">
 					<youtube-video player="player" player-vars="playerOptions" video-id="videoId"></youtube-video>
-				</div>
+                    <p class="subtitle" ng-if="isDisplay(line)"  ng-repeat="line in subs">
+				        {{line.text}}
+				    </p>
+                </div>
 				<div id="content" style="padding:20px;">
-					<div id="subtitle" style="width:100%;text-align: center; min-height: 30px;">
-						<p class="lead" ng-if="isDisplay(line)"  ng-repeat="line in subs">
-							{{line.text}}
-						</p>
-						
-					</div>
-					<hr>
 					<p ng-if="displayTime" style="text-align: center">{{time}}</p>
 					<div style="height:50px;">
 						<a href="#" ng-click="togglePlay()" class="btn btn-primary btn-fab btn-raised pull-left {{getPlaybackIcon()}}"
