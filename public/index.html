@@ -35,20 +35,28 @@
 		<div class="container center-block pagination-centered" >
 			<div class="well well-lg" style="margin-top: 50px; padding: 0px;">
 				<div class="embed-responsive embed-responsive-16by9">
-					<youtube-video player="player" video-id="videoId"></youtube-video>
+					<youtube-video player="player" player-vars="playerOptions" video-id="videoId"></youtube-video>
 				</div>
 				<div id="content" style="padding:20px;">
 					<div id="subtitle" style="width:100%;text-align: center; min-height: 30px;">
-						<p class="lead" ng-if="isPlaying && isDisplay(line)"  ng-repeat="line in subs">
+						<p class="lead" ng-if="isDisplay(line)"  ng-repeat="line in subs">
 							{{line.text}}
 						</p>
+						
 					</div>
 					<hr>
+					<p ng-if="displayTime" style="text-align: center">{{time}}</p>
 					<div style="height:50px;">
-						<a href="#" ng-click="togglePlay()" class="btn btn-primary btn-fab btn-raised pull-left"
-							ng-class="(isPlaying) ? 'mdi-av-stop' : 'mdi-av-play-arrow'"></a>
-
+						<a href="#" ng-click="togglePlay()" class="btn btn-primary btn-fab btn-raised pull-left {{getPlaybackIcon()}}"
+							></a>
 						<form class="form-inline pull-right" role="form">
+							<div class="form-group" style="margin-right:10px">
+								<div class="checkbox">
+                    				<label>
+                        				<input type="checkbox" ng-model="displayTime">Show timer 
+                    				</label>
+                				</div>
+							</div>							
 							<div class="form-group">
 								<input id="videoIdInput" ng-model="videoId" type="text"
 									class="form-control floating-label" placeholder="Youtube Video ID">
