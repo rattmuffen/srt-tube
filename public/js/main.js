@@ -28,6 +28,9 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 	$scope.subs = [];
 
     $scope.hasAlreadyThrownErrorMessageInUsersFace = false;
+	
+	$scope.fontSizes = [16,20,22,24,36,42];
+	$scope.fintSize = $scope.fontSizes[0];
 
 	// Timer.
 	$interval(function() {
@@ -60,7 +63,7 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 
 	$scope.$on('youtube.player.ended', function ($event, player) {
 		$scope.state = $scope.PlaybackState.STOPPED;
-	});	
+	});
 
 	$scope.$on('youtube.player.playing', function ($event, player) {
 		$scope.state = $scope.PlaybackState.PLAYING;
