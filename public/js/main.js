@@ -5,7 +5,7 @@ $(document).ready(function() {
 	$.material.init();
 });
 
-var app = angular.module('srt-tube', ['youtube-embed']);
+var app = angular.module('srt-tube', ['youtube-embed','ngSanitize']);
 
 app.controller('SubCtrl', function ($scope, $interval, $http) {
 	$scope.PlaybackState = {

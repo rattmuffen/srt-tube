@@ -8,6 +8,7 @@
 
 		<!-- Scripts -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script> <!-- Angular -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-sanitize.js"></script>
 		<script src="https://code.jquery.com/jquery.js"></script> <!-- jQuery -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> <!-- Bootstrap -->
 		<script src="https://www.youtube.com/iframe_api"></script>
@@ -36,9 +37,7 @@
 			<div class="well well-lg" style="margin-top: 50px; padding: 0px;">
 				<div class="embed-responsive embed-responsive-16by9">
 					<youtube-video player="player" player-vars="playerOptions" video-id="videoId"></youtube-video>
-                    <p class="subtitle" ng-if="isDisplay(line)"  ng-repeat="line in subs" style="font-size: {{fontSize}}px !important;">
-				        {{line.text}}
-				    </p>
+                    <p class="subtitle" ng-if="isDisplay(line)"  ng-repeat="line in subs" style="font-size: {{fontSize}}px !important;" ng-bind-html="line.text"></p>
                 </div>
 				<div id="content" style="padding:20px;">
 					<p ng-if="displayTime" style="text-align: center">{{time}}</p>
