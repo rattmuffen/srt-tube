@@ -44,21 +44,23 @@
 					<p ng-if="displayTime" style="text-align: center">{{time}}</p>
 					<div style="height:50px;">
 						<form class="form-inline" role="form">
-							<div class="form-group col-lg-4">
+							<div class="form-group col-lg-5">
 								<label for="select" class="col-lg-4 control-label">Subtitle size</label>
 								<div class="col-lg-2">
 									<select class="form-control" id="select" ng-model="fontSize" ng-options="size for size in fontSizes"></select>
 								</div>
+                                <label for="timeOffset" class="col-lg-4 control-label">Time offset (ms)</label>
+                                <div class="col-lg-2">
+                                    <input class="form-control" type="number" id="timeOffset" ng-model="timeOffset" ng-text="timeOffset">
+                                </div>
 							</div>													
 						</form>
 						<form class="form-inline pull-right" role="form">
 							<div class="form-group" style="margin-right:10px">
 								<div class="checkbox">
-                    				<label>
-                        				<input type="checkbox" ng-model="displayTime">Show timer 
-                    				</label>
+                    				<label><input type="checkbox" ng-model="displayTime">Show timer</label>
                 				</div>
-							</div>							
+							</div>
 							<div class="form-group">
 								<input id="videoIdInput" ng-model="videoId" type="text"
 									class="form-control floating-label" placeholder="Youtube Video ID">

@@ -31,6 +31,8 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 
 	$scope.fontSizes = [16, 20, 22, 24, 36, 42];
 	$scope.fontSize = $scope.fontSizes[0];
+    
+    $scope.timeOffset = 0;
 
 	// Timer.
 	$interval(function() {
@@ -55,7 +57,6 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 	// Player events,
 	$scope.$on('youtube.player.paused', function ($event, player) {
 		$scope.state = $scope.PlaybackState.PAUSED;
-        $scope.time = player.getCurrentTime() * 1000;
 //        console.log('event: PAUSED');
 //        console.log("Current time:", player.getCurrentTime());
 	});
@@ -72,6 +73,7 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 
 	$scope.$on('youtube.player.playing', function ($event, player) {
 		$scope.state = $scope.PlaybackState.PLAYING;
+        $scope.time = Math.floor(player.getCurrentTime() * 1000);
 //        console.log('event: PLAYING');
 	});
 
@@ -99,6 +101,8 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 
 	$scope.isDisplay = function (line) {
 		if ($scope.state == $scope.PlaybackState.STOPPED) return false;
-		return $scope.time >= line.startTime && $scope.time <= line.endTime;
+        var adjustedTime = $scope.time + $scope.timeOffset;
+		return adjustedTime >= line.startTime &&
+               adjustedTime <= line.endTime;
 	};
 });
