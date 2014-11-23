@@ -33,6 +33,7 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 	$scope.fontSize = $scope.fontSizes[0];
     
     $scope.timeOffset = 0;
+    $scope.currentSrt = '';
 
 	// Timer.
 	$interval(function() {
@@ -82,7 +83,10 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 		//Take the first selected file
 		fd.append("file", files[0]);
 
-		if (!files[0]) return;
+		if (!files[0] || files[0] === $scope.currentSrt)
+            return;
+
+        $scope.currentSrt = files[0];
 
 		$http.post('/sub/upload', fd, {
 			withCredentials: true,
