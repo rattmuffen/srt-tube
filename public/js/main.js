@@ -48,25 +48,31 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 				break;
 			case $scope.PlaybackState.PAUSED:
 				$scope.lastTime = now;
-				break;				
+				break;
 		}
     }, 1);
 
 	// Player events,
 	$scope.$on('youtube.player.paused', function ($event, player) {
 		$scope.state = $scope.PlaybackState.PAUSED;
+        $scope.time = player.getCurrentTime() * 1000;
+//        console.log('event: PAUSED');
+//        console.log("Current time:", player.getCurrentTime());
 	});
 
     $scope.$on('youtube.player.buffering', function ($event, player) {
         $scope.state = $scope.PlaybackState.PAUSED;
+//        console.log('event: BUFFERING');
     });
 
 	$scope.$on('youtube.player.ended', function ($event, player) {
 		$scope.state = $scope.PlaybackState.STOPPED;
+//        console.log('event: ENDED');		
 	});
 
 	$scope.$on('youtube.player.playing', function ($event, player) {
 		$scope.state = $scope.PlaybackState.PLAYING;
+//        console.log('event: PLAYING');
 	});
 
 	$scope.uploadFile = function(files) {
