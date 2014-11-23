@@ -17,12 +17,10 @@ var router = express.Router();
 
 router.post('/upload', function(req, res, next) {
 	var form = new formidable.IncomingForm();
-		
 	form.parse(req, function(err, fields, files) {
 		var f = files.file.path;
 		var data = fs.readFileSync(f, "utf-8");
 		var subs = parser.fromSrt(data, true);
-			
 		res.send(subs);
 	});		
 });

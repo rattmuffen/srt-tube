@@ -14,11 +14,11 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 		STOPPED : 2
 	};
 	$scope.state = $scope.PlaybackState.STOPPED;
-	
+
 	$scope.displayTimer = false;
 	$scope.time = 0;
 	$scope.lastTime = 0;
-	
+
 	$scope.player = null;
 	$scope.playerOptions = {
 		autohide: 1,
@@ -26,7 +26,9 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 	};
     $scope.videoId;
 	$scope.subs = [];
-	
+
+    $scope.hasAlreadyThrownErrorMessageInUsersFace = false;
+
 	// Timer.
 	$interval(function() {
 		var now = new Date().getTime();
@@ -46,31 +48,30 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 				break;				
 		}
     }, 1);
-	
+
 	// Player events,
 	$scope.$on('youtube.player.paused', function ($event, player) {
 		$scope.state = $scope.PlaybackState.PAUSED;
 	});
-    
+
     $scope.$on('youtube.player.buffering', function ($event, player) {
         $scope.state = $scope.PlaybackState.PAUSED;
     });
-	
+
 	$scope.$on('youtube.player.ended', function ($event, player) {
 		$scope.state = $scope.PlaybackState.STOPPED;
 	});	
-	
+
 	$scope.$on('youtube.player.playing', function ($event, player) {
 		$scope.state = $scope.PlaybackState.PLAYING;
 	});
-		
+
 	$scope.uploadFile = function(files) {
 		var fd = new FormData();
 		//Take the first selected file
 		fd.append("file", files[0]);
-		
-		if (files[0] === null) return;
-		
+
+		if (!files[0]) return;
 
 		$http.post('/sub/upload', fd, {
 			withCredentials: true,
@@ -79,12 +80,14 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 		}).success(function (data) {
 			$scope.subs = data;
 		}).error(function (data) {
-			window.alert('Error mate!');
+            if (!$scope.hasAlreadyThrownErrorMessageInUsersFace) {
+                window.alert('Error mate!');
+                $scope.hasAlreadyThrownErrorMessageInUsersFace = true;
+            }
 			console.log(data);
 		});
-
 	};
-	
+
 	$scope.isDisplay = function (line) {
 		if ($scope.state == $scope.PlaybackState.STOPPED) return false;
 		return $scope.time >= line.startTime && $scope.time <= line.endTime;
