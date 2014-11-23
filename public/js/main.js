@@ -28,9 +28,9 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 	$scope.subs = [];
 
     $scope.hasAlreadyThrownErrorMessageInUsersFace = false;
-	
-	$scope.fontSizes = [16,20,22,24,36,42];
-	$scope.fintSize = $scope.fontSizes[0];
+
+	$scope.fontSizes = [16, 20, 22, 24, 36, 42];
+	$scope.fontSize = $scope.fontSizes[0];
 
 	// Timer.
 	$interval(function() {
