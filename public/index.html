@@ -34,14 +34,14 @@
 
 	<body id="main" ng-controller="SubCtrl">
 		<div class="container center-block pagination-centered">
-			<div class="well well-lg" style="margin-top: 50px; padding: 0px;">
+			<div id="containerWell" class="well well-lg">
 				<div class="embed-responsive embed-responsive-16by9">
 					<youtube-video player="player" player-vars="playerOptions" video-id="videoId"></youtube-video>
                     <p class="subtitle" ng-if="isDisplay(line)"  ng-repeat="line in subs" style="font-size: {{fontSize}}px !important;" ng-bind-html="line.text"></p>
                 </div>
-				<div id="content" style="padding:20px;">
-					<p ng-if="displayTime" style="text-align: center">{{time}}</p>
-					<div style="height:50px;">
+				<div id="content">
+					<p id="timer" ng-if="displayTime">{{time}}</p>
+					<div id="options">
 						<form class="form-inline" role="form">
 							<div class="form-group col-lg-5">
 								<label for="select" class="col-lg-4 control-label">Subtitle size</label>
@@ -55,7 +55,7 @@
 							</div>													
 						</form>
 						<form class="form-inline pull-right" role="form">
-							<div class="form-group" style="margin-right:10px">
+							<div class="form-group form-spaced">
 								<div class="checkbox">
                     				<label><input type="checkbox" ng-model="displayTime">Show timer</label>
                 				</div>

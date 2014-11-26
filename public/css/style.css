@@ -1,24 +1,22 @@
-.bg-image {
-	background:transparent no-repeat center center;
-	-webkit-background-size:cover !important;
-	-moz-background-size:cover !important;
-	background-size:cover !important;
-	height:100vh;
-	width: 100vw;
-	position:absolute;
-	top:0px;
-	left:0px;
-	z-index: -1;
+#containerWell {
+	margin-top: 50px;
+	padding: 0px;	
 }
 
-.panel {
-	background-color: rgba(245, 245, 245, 0.7);
-	border: 0px;
+#content {
+	padding: 20px;
 }
 
-#trackProgress {
-	margin: 0px !important;
-	border: 0px !important;
+#options {
+	height: 50px;
+}
+
+#timer {
+	text-align: center;
+}
+
+.form-spaced {
+	margin-right: 10px;
 }
 
 .subtitle {
