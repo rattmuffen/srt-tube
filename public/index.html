@@ -34,42 +34,51 @@
 
 	<body id="main" ng-controller="SubCtrl">
 		<div class="container center-block pagination-centered">
-			<div id="containerWell" class="well well-lg">
-				<div class="embed-responsive embed-responsive-16by9">
-					<youtube-video player="player" player-vars="playerOptions" video-id="videoId"></youtube-video>
-                    <p class="subtitle" ng-if="isDisplay(line)"  ng-repeat="line in subs" style="font-size: {{fontSize}}px !important;" ng-bind-html="line.text"></p>
-                </div>
-				<div id="content">
-					<p id="timer" ng-if="displayTime">{{time}}</p>
-					<div id="options">
-						<form class="form-inline" role="form">
-							<div class="form-group col-lg-5">
-								<label for="select" class="col-lg-4 control-label">Subtitle size</label>
-								<div class="col-lg-2">
-									<select class="form-control" id="select" ng-model="fontSize" ng-options="size for size in fontSizes"></select>
-								</div>
-                                <label for="timeOffset" class="col-lg-4 control-label">Time offset (ms)</label>
-                                <div class="col-lg-2">
-                                    <input class="form-control" type="number" id="timeOffset" ng-model="timeOffset" ng-text="timeOffset">
-                                </div>
-							</div>													
-						</form>
-						<form class="form-inline pull-right" role="form">
-							<div class="form-group form-spaced">
-								<div class="checkbox">
-                    				<label><input type="checkbox" ng-model="displayTime">Show timer</label>
-                				</div>
-							</div>
-							<div class="form-group">
-								<input id="videoIdInput" ng-model="videoId" type="text"
-									class="form-control floating-label" placeholder="Youtube Video ID">
-							</div>
-							<div class="form-group">
-								<input type="text" readonly="" class="form-control floating-label" placeholder="Browse SRT file...">
-								<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)">
-							</div>
-						</form>
+			<div id="containerPanel" class="panel panel-default">
+				<div id="containerPanel-body" class="panel-body">
+					<div class="embed-responsive embed-responsive-16by9">
+						<youtube-video player="player" player-vars="playerOptions" video-id="videoId"></youtube-video>
+						<p class="subtitle" ng-if="isDisplay(line)"  ng-repeat="line in subs" style="font-size: {{fontSize}}px !important;" ng-bind-html="line.text"></p>
 					</div>
+					<div id="content">
+						<p id="timer" ng-if="displayTime">{{time}}</p>
+						<div id="mainInput" class="center-block">
+							<form class="form-inline" role="form">
+								<div class="form-group" ng-class="isValidId() ? '' : 'has-error'">
+									<input id="videoIdInput" ng-model="videoId" type="text"
+										class="form-control floating-label input-lg" placeholder="Youtube Video ID">
+								</div>
+								<div class="form-group">
+									<input type="text" readonly="" class="form-control floating-label input-lg" placeholder="Browse SRT file...">
+									<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)">
+								</div>
+								<a onclick="$('#options').collapse('toggle')" class="btn btn-flat btn-default">Options...</a>
+							</form>						
+						</div>
+					</div>
+				</div>
+				<div id="options" class="panel-footer collapse">
+					<form role="form" class="form-inline">
+						<div class="form-group col-lg-2">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" ng-model="displayTime"> <b>Show timer</b>
+								</label>
+							</div>
+						</div>							
+						<div class="form-group col-lg-2">
+							<label for="select"><b>Subtitle size (px)</b></label>
+							<div class="col-lg-1">
+								<select class="form-control col-lg-2" id="select" ng-model="fontSize" ng-options="size for size in fontSizes"></select>
+							</div>
+						</div>
+						<div class="form-group col-lg-2">
+							<label for="timeOffset" class="control-label"><b>Time offset (ms)</b></label>
+							<div class="col-lg-1">
+								<input class="form-control" type="number" id="timeOffset" ng-model="timeOffset" ng-text="timeOffset">
+							</div>
+						</div>
+  					</form>
 				</div>
 			</div>
 		</div>
