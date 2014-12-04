@@ -32,7 +32,7 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 	$scope.fontSize = 24;
 	
 	$scope.fontFamily = 'inherit';
-	$scope.fontFamilies = ['inherit','sans-serif','serif','monospaced','fantasy','cursive']
+	$scope.fontFamilies = ['inherit','sans-serif','serif','monospace','fantasy','cursive']
 	
 	$scope.fontColor = 'white';
 	$scope.fontColors = ['white','yellow','red','green','blue','black']
