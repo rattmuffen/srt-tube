@@ -1,5 +1,5 @@
 #containerPanel {
-	margin-top: 50px;
+	margin-top: 20px;
 	padding: 0px;	
 }
 
@@ -9,10 +9,6 @@
 
 #content {
 	padding: 20px;
-}
-
-#options {
-	height: 50px;
 }
 
 #mainInput {
@@ -26,6 +22,15 @@
 
 #video {
 	padding: 0px;
+}
+
+#options {
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.option-divider {
+	margin-top: -15px;
 }
 
 .form-spaced {
@@ -50,6 +55,6 @@
 	font-weight: normal;
 }
 
-.form-group select {
+.form-group input {
 	display: inline-block;
 }

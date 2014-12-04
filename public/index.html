@@ -38,7 +38,8 @@
 				<div id="containerPanel-body" class="panel-body">
 					<div class="embed-responsive embed-responsive-16by9">
 						<youtube-video player="player" player-vars="playerOptions" video-id="videoId"></youtube-video>
-						<p class="subtitle" ng-if="isDisplay(line)"  ng-repeat="line in subs" style="font-size: {{fontSize}}px !important;" ng-bind-html="line.text"></p>
+						<p class="subtitle" ng-if="isDisplay(line)"  ng-repeat="line in subs" ng-bind-html="line.text"
+						   style="font-size: {{fontSize}}px !important; font-family: {{fontFamily}} !important; color: {{fontColor}} !important"></p>
 					</div>
 					<div id="content">
 						<p id="timer" ng-if="displayTime">{{time}}</p>
@@ -58,27 +59,59 @@
 					</div>
 				</div>
 				<div id="options" class="panel-footer collapse">
-					<form role="form" class="form-inline">
-						<div class="form-group col-lg-2">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" ng-model="displayTime"> <b>Show timer</b>
-								</label>
-							</div>
-						</div>							
-						<div class="form-group col-lg-2">
-							<label for="select"><b>Subtitle size (px)</b></label>
-							<div class="col-lg-1">
-								<select class="form-control col-lg-2" id="select" ng-model="fontSize" ng-options="size for size in fontSizes"></select>
-							</div>
+					<div class="row">
+						<div class="col-lg-4">
+							<legend><small>Style</small></legend>
+							<hr class="option-divider">
+							<form role="form" class="form-inline">
+								<div class="form-group col-lg-10">
+									<label for="size" class="control-label"><b>Subtitle size (px)</b></label>
+									<div class="col-lg-6">
+										<input class="form-control" type="number" id="size" ng-model="fontSize" ng-text="fontSize">
+									</div>
+								</div>
+								<div class="form-group col-lg-10">
+									<label for="color"><b>Subtitle color</b></label>
+										<div class="col-lg-6">
+											<select class="form-control" id="color" ng-model="fontColor"
+													ng-options="color for color in fontColors"></select>
+									</div>
+								</div>
+								<div class="form-group col-lg-10">
+									<label for="family"><b>Font family</b></label>
+										<div class="col-lg-6">
+											<select class="form-control" id="family" ng-model="fontFamily"
+													ng-options="family for family in fontFamilies"></select>
+									</div>
+								</div>
+							</form>
 						</div>
-						<div class="form-group col-lg-2">
-							<label for="timeOffset" class="control-label"><b>Time offset (ms)</b></label>
-							<div class="col-lg-1">
-								<input class="form-control" type="number" id="timeOffset" ng-model="timeOffset" ng-text="timeOffset">
-							</div>
+						<div class="col-lg-4">
+							<legend>Timing</legend>
+							<hr class="option-divider">
+							<form role="form" class="form-inline">
+								<div class="form-group">
+									<label for="size" class="control-label"><b>Time offset (ms)</b></label>
+									<div class="col-lg-6">
+										<input class="form-control" type="number" id="timeOffset" ng-model="timeOffset" ng-text="timeOffset">
+									</div>
+								</div>
+							</form>
 						</div>
-  					</form>
+						<div class="col-lg-4">
+							<legend>Debug</legend>
+							<hr class="option-divider">
+							<form role="form" class="form-inline">
+								<div class="form-group">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" ng-model="displayTime"> <b>Show timer</b>
+										</label>
+									</div>
+								</div>
+							</form>	
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

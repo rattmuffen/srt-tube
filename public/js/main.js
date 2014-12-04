@@ -29,8 +29,13 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 
     $scope.hasAlreadyThrownErrorMessageInUsersFace = false;
 
-	$scope.fontSizes = [16, 20, 22, 24, 36, 42];
-	$scope.fontSize = $scope.fontSizes[0];
+	$scope.fontSize = 24;
+	
+	$scope.fontFamily = 'inherit';
+	$scope.fontFamilies = ['inherit','sans-serif','serif','monospaced','fantasy','cursive']
+	
+	$scope.fontColor = 'white';
+	$scope.fontColors = ['white','yellow','red','green','blue','black']
     
     $scope.timeOffset = 0;
     $scope.currentSrt = '';
