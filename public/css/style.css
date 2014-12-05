@@ -20,13 +20,20 @@
 	text-align: center;
 }
 
-#video {
-	padding: 0px;
-}
-
 #options {
 	text-align: center;
 	padding-bottom: 20px;
+}
+
+#subtitle {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 8%;
+    color: white;
+    
+    /* Creates a black 1 pixel border around the text. */
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .option-divider {
@@ -35,18 +42,6 @@
 
 .form-spaced {
 	margin-right: 10px;
-}
-
-.subtitle {
-    text-align: center;
-    position: absolute;
-    width: 100%;
-    bottom: 8%;
-    color: white;
-    text-shadow: -1px 0 black,
-                 0 1px black,
-                 1px 0 black,
-                 0 -1px black;
 }
 
 .form-group label {

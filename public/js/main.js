@@ -19,7 +19,7 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
     $scope.time = 0;
     $scope.lastTime = 0;
 
-    $scope.player = null; // TODO: This never gets assigned?
+    $scope.player = null;
     $scope.playerOptions = {
         autohide: 1,
         modestbranding: 1
@@ -107,7 +107,7 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
                 window.alert('Error mate!');
                 $scope.hasAlreadyThrownErrorMessageInUsersFace = true;
             }
-            console.log(data);
+            console.log('error:', data);
         });
     };
 
@@ -122,11 +122,14 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
     };
 
     $scope.isValidId = function () {
+        // An empty field counts as a valid id.
         if (!$scope.player || $scope.player === undefined ||
             $scope.videoId === null || $scope.videoId === '') {
             return true;
         }
 
-        return $scope.player.getDuration() !== 0; // TODO: Fix $scope.player.
+        // If the function getDuration() is not present in our player object,
+        // then it is probably not a valid id.
+        return typeof $scope.player.getDuration === 'function';
     };
 });
