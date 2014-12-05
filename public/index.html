@@ -38,7 +38,7 @@
 				<div id="containerPanel-body" class="panel-body">
 					<div class="embed-responsive embed-responsive-16by9">
 						<youtube-video player="player" player-vars="playerOptions" video-id="videoId"></youtube-video>
-						<p class="subtitle" ng-if="isDisplay(line)"  ng-repeat="line in subs" ng-bind-html="line.text"
+						<p class="subtitle" ng-if="isSubtitleLineDisplayed(line)"  ng-repeat="line in subs" ng-bind-html="line.text"
 						   style="font-size: {{fontSize}}px !important; font-family: {{fontFamily}} !important; color: {{fontColor}} !important"></p>
 					</div>
 					<div id="content">
