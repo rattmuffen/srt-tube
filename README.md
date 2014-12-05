@@ -26,3 +26,8 @@ Open a terminal and execute the following command to install the Node.js depende
 Execute this command to start the application:
 
     node app.js
+	
+## Live version	
+A live version is available on [srttube.cloudcontrolled](http://srttube.cloudcontrolled.com/).
+
+Note that it might not be updated with the latest commits.

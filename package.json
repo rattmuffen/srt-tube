@@ -11,6 +11,9 @@
 		"formidable": "1.0.15",
 		"subtitles-parser": "0.0.2"
 	},
+	"scripts": {
+		"start": "node app.js"
+	},
 	"engines": {
 		"node": "0.10.x"
 	}

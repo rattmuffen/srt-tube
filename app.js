@@ -10,6 +10,8 @@ var fs = require('fs');
 var parser = require('subtitles-parser');
 var app = express();
 
+var port = process.env.PORT || 7845;
+
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 
@@ -27,6 +29,6 @@ router.post('/upload', function (req, res, next) {
 
 app.use('/sub', router);
 
-var server = app.listen(7845, function () {
+var server = app.listen(port, function () {
     console.log('Listening on port %d', server.address().port);
 });
