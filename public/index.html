@@ -38,11 +38,16 @@
 				<div id="containerPanel-body" class="panel-body">
 					<div class="embed-responsive embed-responsive-16by9">
 						<youtube-video player="player" player-vars="playerOptions" video-id="videoId"></youtube-video>
-						<p class="subtitle" ng-if="isSubtitleLineDisplayed(line)"  ng-repeat="line in subs" ng-bind-html="line.text"
-						   style="font-size: {{fontSize}}px !important; font-family: {{fontFamily}} !important; color: {{fontColor}} !important"></p>
+						<div class="subtitle-wrapper" ng-if="isSubtitleLineDisplayed(line)"  ng-repeat="line in subs">
+							<p class="subtitle" ng-class="subtitleBackground ? 'subtitle-background' : ''" ng-bind-html="line.text"
+						   style="font-size: {{fontSize}}px !important; font-family: {{fontFamily}} !important; color: {{fontColor}} !important; "></p>
+						</div>
 					</div>
 					<div id="content">
-						<p id="timer" ng-if="displayTime">{{time}}</p>
+						<div id="debug" ng-if="displayTime || displayState">
+							<span ng-if="displayTime">Time: {{time}}</span>
+							<span ng-if="displayState">State: {{state}}</span>
+						</div>
 						<div id="mainInput" class="center-block">
 							<form class="form-inline" role="form">
 								<div class="form-group" ng-class="isValidId() ? '' : 'has-error'">
@@ -84,6 +89,13 @@
 													ng-options="family for family in fontFamilies"></select>
 									</div>
 								</div>
+								<div class="form-group col-lg-10 ">
+									<div class="checkbox pull-left">
+										<label>
+											<input type="checkbox" ng-model="subtitleBackground"> <b>Use background</b>
+										</label>
+									</div>
+								</div>								
 							</form>
 						</div>
 						<div class="col-lg-4">
@@ -102,13 +114,20 @@
 							<legend>Debug</legend>
 							<hr class="option-divider">
 							<form role="form" class="form-inline">
-								<div class="form-group">
-									<div class="checkbox">
+								<div class="form-group col-lg-10">
+									<div class="checkbox pull-left">
 										<label>
 											<input type="checkbox" ng-model="displayTime"> <b>Show timer</b>
 										</label>
 									</div>
 								</div>
+								<div class="form-group col-lg-10">
+									<div class="checkbox pull-left">
+										<label>
+											<input type="checkbox" ng-model="displayState"> <b>Show player state</b>
+										</label>
+									</div>
+								</div>								
 							</form>	
 						</div>
 					</div>

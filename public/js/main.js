@@ -16,6 +16,7 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
     $scope.state = $scope.PlaybackState.STOPPED;
 
     $scope.displayTimer = false;
+	$scope.displayState = false;
     $scope.time = 0;
     $scope.lastTime = 0;
 
@@ -36,6 +37,8 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 
     $scope.fontColor = 'white';
     $scope.fontColors = ['white','yellow','red','green','blue','black'];
+	
+	$scope.subtitleBackground = false;
 
     $scope.timeOffset = 0;
     $scope.currentSrt = '';

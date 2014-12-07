@@ -16,7 +16,7 @@
 	text-align: center !important;
 }
 
-#timer {
+#debug {
 	text-align: center;
 }
 
@@ -25,15 +25,22 @@
 	padding-bottom: 20px;
 }
 
-#subtitle {
+.subtitle-wrapper {
     text-align: center;
     position: absolute;
-    width: 100%;
     bottom: 8%;
-    color: white;
-    
+	width: 100%;
+}
+
+.subtitle {
+	display: inline-block;
+	
     /* Creates a black 1 pixel border around the text. */
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;	
+}
+
+.subtitle-background {
+	background-color: rgba(100, 100, 100, 0.6); 	
 }
 
 .option-divider {
