@@ -1,20 +1,21 @@
 {
-	"name": "srt-tube",
-	"description": "SRTs on my Youtube?",
-	"version": "0.0.1",
-	"private": true,
-	"dependencies": {
-		"express": "~4.0.0",
-		"morgan": "~1.0.0",
-		"body-parser": "~1.0.0",
-		"method-override": "~1.0.0",
-		"formidable": "1.0.15",
-		"subtitles-parser": "0.0.2"
-	},
-	"scripts": {
-		"start": "node app.js"
-	},
-	"engines": {
-		"node": "0.10.x"
-	}
+    "name": "srt-tube",
+    "description": "SRTs on my Youtube?",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "express": "~4.0.0",
+        "morgan": "~1.0.0",
+        "body-parser": "~1.0.0",
+        "method-override": "~1.0.0",
+        "formidable": "1.0.15",
+        "subtitles-parser": "0.0.2",
+        "adm-zip": "0.4.4"
+    },
+    "scripts": {
+        "start": "node app.js"
+    },
+    "engines": {
+        "node": "0.10.x"
+    }
 }
