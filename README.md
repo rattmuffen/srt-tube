@@ -18,16 +18,21 @@ and the following Angular modules:
 
 The BootStrap theme is [Material Design](http://fezvrasta.github.io/bootstrap-material-design/).
 
-## How to install and run
-Open a terminal and execute the following command to install the Node.js dependencies:
+## How to install
+To install the Node.js dependencies, open a terminal and execute the following command :
 
     npm install
+	
+To install the Bower dependencies, install [bower-installer](https://github.com/blittle/bower-installer) with `npm install -g bower-installer` and then run:
 
+    bower-installer
+
+## How to run
 Execute this command to start the application:
 
     node app.js
 	
 ## Live version	
-A live version is available on [srttube.cloudcontrolled](http://srttube.cloudcontrolled.com/).
+A live version is available on [srttube.cloudcontrolled.com](http://srttube.cloudcontrolled.com/).
 
 Note that it might not be updated with the latest commits.
