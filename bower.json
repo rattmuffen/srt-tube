@@ -4,8 +4,7 @@
 	"dependencies" : {
 		"angular-youtube-mb" : "latest",
 		"bootstrap-material-design" : "latest",
-		"bootstrap" : "latest",
-		"font-awesome" : "latest"
+		"bootstrap" : "latest"
 	},
 	"install" : {
 		"base":  "public/bower",
