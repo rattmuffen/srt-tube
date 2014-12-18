@@ -43,9 +43,9 @@
 						</div>
 					</div>
 					<div id="content">
-						<div id="debug" ng-if="displayTime || displayState">
-							<span ng-if="displayTime">Time: {{time}}</span>
-							<span ng-if="displayState">State: {{state}}</span>
+						<div id="debug" class="pull-left" ng-if="displayTime || displayState">
+							<span ng-if="displayTime"><b>Time (ms)</b>: {{time}}<br></span>
+							<span ng-if="displayState"><b>State</b>: {{state.name}}</span>
 						</div>
 						<div id="mainInput" class="center-block">
 							<form class="form-inline" role="form">
@@ -67,29 +67,29 @@
 						<div class="col-lg-4">
 							<legend>Style</legend>
 							<hr class="option-divider">
-							<form role="form" class="form-inline">
+							<form role="form" class="form-horizontal">
 								<div class="form-group col-lg-10">
 									<label for="size" class="control-label"><b>Subtitle size (px)</b></label>
-									<div class="col-lg-6">
+									<div class="col-lg-6 pull-right">
 										<input class="form-control" type="number" id="size" ng-model="fontSize" ng-text="fontSize">
 									</div>
 								</div>
 								<div class="form-group col-lg-10">
 									<label for="color"><b>Subtitle color</b></label>
-										<div class="col-lg-6">
+										<div class="col-lg-6 pull-right">
 											<select class="form-control" id="color" ng-model="fontColor"
 													ng-options="color for color in fontColors"></select>
 									</div>
 								</div>
 								<div class="form-group col-lg-10">
 									<label for="family"><b>Font family</b></label>
-										<div class="col-lg-6">
+										<div class="col-lg-6 pull-right">
 											<select class="form-control" id="family" ng-model="fontFamily"
 													ng-options="family for family in fontFamilies"></select>
 									</div>
 								</div>
 								<div class="form-group col-lg-10 ">
-									<div class="checkbox pull-left">
+									<div class="togglebutton pull-left">
 										<label>
 											<input type="checkbox" ng-model="subtitleBackground"> <b>Use background</b>
 										</label>
@@ -100,10 +100,10 @@
 						<div class="col-lg-4">
 							<legend>Timing</legend>
 							<hr class="option-divider">
-							<form role="form" class="form-inline">
-								<div class="form-group">
+							<form role="form" class="form-horizontal">
+								<div class="form-group col-lg-10">
 									<label for="size" class="control-label"><b>Time offset (ms)</b></label>
-									<div class="col-lg-6">
+									<div class="col-lg-6 pull-right">
 										<input class="form-control" type="number" id="timeOffset" ng-model="timeOffset" ng-text="timeOffset">
 									</div>
 								</div>
@@ -114,14 +114,14 @@
 							<hr class="option-divider">
 							<form role="form" class="form-inline">
 								<div class="form-group col-lg-10">
-									<div class="checkbox pull-left">
+									<div class="togglebutton pull-left">
 										<label>
 											<input type="checkbox" ng-model="displayTime"> <b>Show timer</b>
 										</label>
 									</div>
 								</div>
 								<div class="form-group col-lg-10">
-									<div class="checkbox pull-left">
+									<div class="togglebutton pull-left">
 										<label>
 											<input type="checkbox" ng-model="displayState"> <b>Show player state</b>
 										</label>

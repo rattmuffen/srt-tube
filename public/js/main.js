@@ -9,9 +9,9 @@ var app = angular.module('srt-tube', ['youtube-embed','ngSanitize']);
 
 app.controller('SubCtrl', function ($scope, $interval, $http) {
     $scope.PlaybackState = {
-        PLAYING : 0,
-        PAUSED : 1,
-        STOPPED : 2
+        PLAYING : {id: 0, name: 'Playing'},
+        PAUSED : {id: 1, name: 'Paused'},
+        STOPPED : {id: 2, name: 'Stopped'}
     };
     $scope.state = $scope.PlaybackState.STOPPED;
 
