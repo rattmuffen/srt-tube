@@ -65,8 +65,6 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
         }
     }, 1);
 
-    // YouTube player events.
-
     $scope.$on('youtube.player.paused', function ($event, player) {
         $scope.state = $scope.PlaybackState.PAUSED;
         console.log('event: PAUSED');
@@ -134,5 +132,10 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
         // If the function getDuration() is not present in our player object,
         // then it is probably not a valid id.
         return typeof $scope.player.getDuration === 'function';
+    };
+
+    $scope.resetTimer = function () {
+        $scope.time = 0;
+        $scope.lastTime = 0;
     };
 });
