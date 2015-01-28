@@ -16,7 +16,11 @@ and the following Angular modules:
 
 * **[angular-youtube-embed](https://github.com/brandly/angular-youtube-embed)** for embedding YouTube videos.
 
-The BootStrap theme is [Material Design](http://fezvrasta.github.io/bootstrap-material-design/).
+Other front end dependencies include:
+
+* **[Material Design](http://fezvrasta.github.io/bootstrap-material-design/)** as the BootStrap theme.
+
+* **[noUiSlider](http://refreshless.com/nouislider/)** for progress bars and such.
 
 ## How to install
 To install the Node.js dependencies, open a terminal and execute the following command :

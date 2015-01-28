@@ -2,7 +2,19 @@
 'use strict';
 
 $(document).ready(function () {
+	// Init material design.
     $.material.init();
+	
+	// Init slider.
+	$("#progressBar").noUiSlider({
+		start: 0,
+		behaviour: 'snap',
+		connect: "lower",
+        range: {
+			min: 0,
+			max: 100
+		}
+	});	
 });
 
 var app = angular.module('srt-tube', ['youtube-embed','ngSanitize']);
@@ -23,7 +35,9 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
     $scope.player = null;
     $scope.playerOptions = {
         autohide: 1,
-        modestbranding: 1
+        modestbranding: 1,
+		controls: 0,
+		fs: 0
     };
     $scope.videoId = null;
     $scope.subs = [];
@@ -53,6 +67,9 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
                 if (now > $scope.lastTime) {
                     $scope.time += (now - $scope.lastTime);
                     $scope.lastTime = now;
+					
+					// Set progressbar value.
+					$("#progressBar").val(($scope.player.getCurrentTime() / $scope.player.getDuration()) * 100);
                 }
                 break;
             case $scope.PlaybackState.STOPPED:
@@ -64,6 +81,16 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
                 break;
         }
     }, 1);
+	
+	$("#progressBar").on({
+		slide: function() {
+			if ($scope.player !== null) {
+				// seekTo progress bar value.
+				var progress = $("#progressBar").val();
+				$scope.player.seekTo((progress / 100) * $scope.player.getDuration());
+			}
+		}
+	});	
 
     $scope.$on('youtube.player.paused', function ($event, player) {
         $scope.state = $scope.PlaybackState.PAUSED;

@@ -16,6 +16,7 @@
 		<script type="text/javascript" src="bower/angular-youtube-mb/js/angular-youtube-embed.min.js"></script>
 		<script type="text/javascript" src="bower/bootstrap-material-design/js/material.min.js"></script>
 		<script type="text/javascript" src="bower/bootstrap-material-design/js/ripples.min.js"></script>
+		<script type="text/javascript" src="bower/nouislider/js/jquery.nouislider.all.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -28,6 +29,7 @@
 		<link href="bower/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="bower/bootstrap-material-design/css/ripples.min.css" rel="stylesheet">
 		<link href="bower/bootstrap-material-design/css/material-wfont.min.css" rel="stylesheet">
+		<link href="bower/nouislider/css/jquery.nouislider.pips.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
 	</head>
 
@@ -40,6 +42,16 @@
 						<div class="subtitle-wrapper" ng-if="isSubtitleLineDisplayed(line)"  ng-repeat="line in subs">
 							<p class="subtitle" ng-class="subtitleBackground ? 'subtitle-background' : ''" ng-bind-html="line.text"
 						   style="font-size: {{fontSize}}px !important; font-family: {{fontFamily}} !important; color: {{fontColor}} !important; "></p>
+						</div>
+					</div>
+					<div id="controls">
+						<button class="btn btn-info btn-fab btn-fab-mini btn-raised mdi-av-pause" ng-click="player.pauseVideo()"></button>
+						<button class="btn btn-primary btn-fab btn-raised mdi-av-play-arrow" ng-click="player.playVideo()"></button>
+						<button class="btn btn-danger btn-fab btn-fab-mini btn-raised mdi-av-stop" ng-click="player.stopVideo()"></button>
+						<div class="row">
+							<div class="col-md-10 col-md-offset-1">
+								<div id="progressBar" class="slider"></div>
+							</div>
 						</div>
 					</div>
 					<div id="content">
