@@ -5,16 +5,26 @@ $(document).ready(function () {
 	// Init material design.
     $.material.init();
 	
-	// Init slider.
+	// Init sliders.
 	$("#progressBar").noUiSlider({
 		start: 0,
 		behaviour: 'snap',
 		connect: "lower",
-        range: {
+		range: {
 			min: 0,
 			max: 100
 		}
-	});	
+	});
+	
+	$("#volumeBar").noUiSlider({
+		start: 100,
+		behaviour: 'snap',
+		connect: "lower",
+		range: {
+			min: 0,
+			max: 100
+		}
+	});		
 });
 
 var app = angular.module('srt-tube', ['youtube-embed','ngSanitize']);
@@ -75,6 +85,7 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
             case $scope.PlaybackState.STOPPED:
                 $scope.lastTime = now;
                 $scope.time = 0;
+				$("#progressBar").val(0);
                 break;
             case $scope.PlaybackState.PAUSED:
                 $scope.lastTime = now;
@@ -88,6 +99,16 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 				// seekTo progress bar value.
 				var progress = $("#progressBar").val();
 				$scope.player.seekTo((progress / 100) * $scope.player.getDuration());
+			}
+		}
+	});
+	
+	$("#volumeBar").on({
+		slide: function() {
+			if ($scope.player !== null) {
+				// Set volume.
+				var volume = $("#volumeBar").val();
+				$scope.player.setVolume(volume);
 			}
 		}
 	});	

@@ -15,7 +15,8 @@
 			"eot": "{name}/fonts",
 			"svg": "{name}/fonts",
 			"ttf": "{name}/fonts",
-			"woff": "{name}/fonts"
+			"woff": "{name}/fonts",
+			"otf": "{name}/fonts"
 		},
 		"sources" : {
 			"angular-youtube-mb" : "bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js",
