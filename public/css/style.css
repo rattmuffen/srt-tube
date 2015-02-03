@@ -29,10 +29,16 @@
 #controls {
 	margin-top: 10px;
 	text-align: center;
+	margin-right: 20px;
+	margin-left: 20px;
 }
 
 #volumeBar {
 	margin-right: 5px;
+}
+
+#muteButton {
+	margin-top: 10px;
 }
 
 .subtitle-wrapper {

@@ -50,6 +50,7 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 		fs: 0
     };
     $scope.videoId = null;
+	$scope.muted = false;
     $scope.subs = [];
 
     $scope.hasAlreadyThrownErrorMessageInUsersFace = false;
@@ -111,7 +112,14 @@ app.controller('SubCtrl', function ($scope, $interval, $http) {
 				$scope.player.setVolume(volume);
 			}
 		}
-	});	
+	});
+	
+	$scope.mute = function() {
+		if ($scope.player !== null) {
+			$scope.muted ? $scope.player.unMute() : $scope.player.mute();
+			$scope.muted = !$scope.muted;
+		}
+	}
 
     $scope.$on('youtube.player.paused', function ($event, player) {
         $scope.state = $scope.PlaybackState.PAUSED;

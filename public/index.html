@@ -44,10 +44,12 @@
 						   style="font-size: {{fontSize}}px !important; font-family: {{fontFamily}} !important; color: {{fontColor}} !important; "></p>
 						</div>
 					</div>
-					<div id="controls">
+					<div id="controls" class="row">
 						<button class="btn btn-info btn-fab btn-fab-mini btn-raised mdi-av-pause" ng-click="player.pauseVideo()"></button>
 						<button class="btn btn-primary btn-fab btn-raised mdi-av-play-arrow" ng-click="player.playVideo()"></button>
 						<button class="btn btn-danger btn-fab btn-fab-mini btn-raised mdi-av-stop" ng-click="player.stopVideo()"></button>
+						<button id="muteButton" class="btn btn-danger btn-fab btn-fab-mini btn-raised pull-right"
+								ng-click="mute()" ng-class="muted ? 'mdi-av-volume-up' : 'mdi-av-volume-off'"></button>
 						<div class="row">
 							<div class="col-md-10 col-md-offset-1">
 								<div id="progressBar" class="slider"></div>
