@@ -37,8 +37,13 @@
 	margin-right: 5px;
 }
 
-#muteButton {
+.side-btn {
 	margin-top: 10px;
+}
+
+#sub-edit-body {
+	max-height: 700px;
+	overflow-y: auto;
 }
 
 .subtitle-wrapper {

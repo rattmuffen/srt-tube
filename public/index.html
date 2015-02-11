@@ -45,10 +45,12 @@
 						</div>
 					</div>
 					<div id="controls" class="row">
+						<button class="btn btn-success btn-fab btn-fab-mini btn-raised pull-left mdi-editor-format-list-bulleted side-btn " 
+								ng-class="subs && subs.length > 0 ? '' : 'disabled'" data-toggle="modal" data-target="#subEditModal"></button>
 						<button class="btn btn-info btn-fab btn-fab-mini btn-raised mdi-av-pause" ng-click="player.pauseVideo()"></button>
 						<button class="btn btn-primary btn-fab btn-raised mdi-av-play-arrow" ng-click="player.playVideo()"></button>
 						<button class="btn btn-danger btn-fab btn-fab-mini btn-raised mdi-av-stop" ng-click="player.stopVideo()"></button>
-						<button id="muteButton" class="btn btn-danger btn-fab btn-fab-mini btn-raised pull-right"
+						<button class="btn btn-danger btn-fab btn-fab-mini btn-raised pull-right side-btn"
 								ng-click="mute()" ng-class="muted ? 'mdi-av-volume-up' : 'mdi-av-volume-off'"></button>
 						<div class="row">
 							<div class="col-md-10 col-md-offset-1">
@@ -145,6 +147,36 @@
 									</div>
 								</div>								
 							</form>	
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Sub edit modal -->
+			<div class="modal fade" id="subEditModal" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content table-responsive">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h2 class="modal-title" id="myModalLabel">Edit subtitle</h2>
+						</div>
+						<div id="sub-edit-body" class="modal-body">
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th class="col-sm-1">Line #</th>
+										<th class="col-sm-2">Start time (ms)</th>
+										<th class="col-sm-2">End time (ms)</th>
+										<th>Text</th>
+									</tr>
+								</thead>
+								<tr ng-repeat="line in subs">
+									<td>{{$index + 1}}</td>
+									<td><input class="form-control" type="number" ng-model="line.startTime" placeholder="{{line.startTime}}"></td>
+									<td><input class="form-control" type="number" ng-model="line.endTime" placeholder="{{line.endTime}}"></td>
+									<td><input class="form-control" type="text" ng-model="line.text" placeholder="{{line.text}}"></td>
+								</tr>
+							</table>
 						</div>
 					</div>
 				</div>
